@@ -37,22 +37,22 @@ export default function StepCard({ step }) {
 
   return (
     <motion.article
-      className="step-card glass-card group relative h-full overflow-hidden p-5 md:p-6"
+      className="step-card glass-card group relative h-full min-h-40 overflow-hidden p-5"
       variants={getStepVariants(prefersReducedMotion)}
-      whileHover={prefersReducedMotion ? undefined : { y: -4 }}
+      whileHover={prefersReducedMotion ? undefined : { y: -5 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
-      <div className="step-card__topline absolute inset-x-5 top-0 z-10 h-px bg-gradient-to-r from-transparent via-cyan-200/35 to-transparent transition" />
-      <div className="relative z-10 mb-6 flex items-start justify-between gap-4">
-        <span className="step-card__number font-display text-4xl font-semibold text-cyan-100/90 transition">
+      <div className="step-card__topline absolute inset-x-5 top-0 z-10 h-px bg-gradient-to-r from-cyan-200/40 via-cyan-200/18 to-transparent transition" />
+      <div className="relative z-10 mb-5 flex items-center justify-between gap-4">
+        <span className="step-card__number font-mono rounded-full border border-cyan-200/15 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-100/90 transition">
           {step.number}
         </span>
-        <span className="step-card__icon inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cyan-200/15 bg-cyan-300/10 text-cyan-100 transition">
+        <span className="step-card__icon inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan-200/15 bg-cyan-300/10 text-cyan-100 transition">
           <Icon aria-hidden="true" className="h-5 w-5 transition" />
         </span>
       </div>
       <h3 className="relative z-10 font-display text-xl font-semibold text-white">{step.title}</h3>
-      <p className="relative z-10 mt-3 text-sm leading-7 text-slate-300">{step.text}</p>
+      <p className="relative z-10 mt-3 text-sm leading-6 text-slate-300">{step.text}</p>
     </motion.article>
   );
 }

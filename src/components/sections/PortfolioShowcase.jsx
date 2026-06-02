@@ -257,15 +257,18 @@ function CertificateCard({ certificate, labels, onPreview }) {
   return (
     <article className="portfolio-card glass-card relative flex h-full flex-col overflow-hidden p-5 sm:p-6">
       <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-cyan-300/10 blur-3xl" />
+      <div className="relative z-10 mb-4 flex justify-center">
+        <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/20 bg-cyan-300/10 px-3 py-1 text-[0.68rem] font-bold uppercase text-cyan-100 shadow-lg shadow-cyan-950/10 backdrop-blur">
+          <BadgeCheck size={13} aria-hidden="true" />
+          {certificateType}
+        </span>
+      </div>
       <button
         type="button"
         className="group relative mb-5 flex h-56 w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900/90 to-cyan-950/[0.35] shadow-inner shadow-cyan-950/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-200"
         aria-label={`${labels.viewCertificate}: ${certificate.title}`}
         onClick={() => onPreview(certificate)}
       >
-        <span className="absolute left-3 top-3 z-10 rounded-full border border-cyan-200/20 bg-slate-950/80 px-3 py-1 text-[0.68rem] font-bold uppercase text-cyan-100 shadow-lg shadow-slate-950/30 backdrop-blur">
-          {certificateType}
-        </span>
         {imageFailed || !certificate.image ? (
           <CertificateImageFallback labels={labels} />
         ) : (
@@ -307,16 +310,18 @@ function CertificateCard({ certificate, labels, onPreview }) {
             </span>
           ))}
         </div>
-        <a
-          href={certificate.credentialUrl}
-          target="_blank"
-          rel="noreferrer"
-          onClick={(event) => event.stopPropagation()}
-          className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-cyan-200/20 bg-cyan-300/10 px-4 py-3 text-sm font-bold text-cyan-100 transition hover:border-cyan-200/[0.45] hover:bg-cyan-300/[0.18] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-200"
-        >
-          {labels.viewCredential}
-          <ExternalLink size={16} aria-hidden="true" />
-        </a>
+        <div className="mt-auto pt-6">
+          <a
+            href={certificate.credentialUrl}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(event) => event.stopPropagation()}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-cyan-200/20 bg-cyan-300/10 px-4 py-3 text-sm font-bold text-cyan-100 transition hover:border-cyan-200/[0.45] hover:bg-cyan-300/[0.18] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-200"
+          >
+            {labels.viewCredential}
+            <ExternalLink size={16} aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </article>
   );
@@ -432,11 +437,15 @@ function EducationPanel({ education }) {
     <article className="portfolio-card glass-card relative overflow-hidden p-5 sm:p-7">
       <div className="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-cyan-300/10 blur-3xl" />
       <div className="relative grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-        <div className="rounded-lg border border-white/10 bg-slate-950/50 p-6 text-center">
-          <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-cyan-200/15 bg-cyan-300/10 text-cyan-100">
-            <GraduationCap size={30} aria-hidden="true" />
-          </span>
-          <p className="mt-5 font-display text-3xl font-semibold text-white">IT STEP</p>
+        <div className="rounded-lg border border-white/10 bg-slate-950/50 p-6 text-center shadow-inner shadow-cyan-950/10">
+          <div className="mx-auto flex min-h-32 max-w-60 items-center justify-center rounded-2xl border border-cyan-200/15 bg-white p-5 shadow-xl shadow-slate-950/25">
+            <img
+              src="/logos/it-step-academy.png"
+              alt="IT Step Academy logo"
+              className="max-h-24 w-full object-contain"
+              loading="lazy"
+            />
+          </div>
           <p className="mt-2 text-sm font-semibold text-cyan-100">{education.institution}</p>
         </div>
 

@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Brackets, Code2, IdCard, MapPin, ScanLine, Sparkles, Terminal, UserRound } from "lucide-react";
+import { Brackets, IdCard, MapPin, ScanLine, Sparkles, Terminal } from "lucide-react";
 
 export default function DeveloperIdCard({ card }) {
   const prefersReducedMotion = useReducedMotion();
@@ -15,17 +15,8 @@ export default function DeveloperIdCard({ card }) {
       <div className="developer-id-clip" aria-hidden="true" />
       <motion.article
         className="developer-id-card glass-card group relative overflow-hidden px-4 pb-4 pt-5 sm:px-5 sm:pb-5"
-        animate={prefersReducedMotion ? undefined : { y: [0, -8, 0] }}
         whileHover={prefersReducedMotion ? undefined : { y: -6, rotateX: 2, rotateY: -2 }}
-        transition={
-          prefersReducedMotion
-            ? { duration: 0.25, ease: "easeOut" }
-            : {
-                y: { duration: 7.5, repeat: Infinity, ease: "easeInOut" },
-                rotateX: { duration: 0.25, ease: "easeOut" },
-                rotateY: { duration: 0.25, ease: "easeOut" },
-              }
-        }
+        transition={{ duration: 0.25, ease: "easeOut" }}
       >
         <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-300/12 blur-3xl" />
         <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/45 to-transparent" />
@@ -50,11 +41,14 @@ export default function DeveloperIdCard({ card }) {
           <div className="absolute bottom-4 right-4 text-cyan-100/45">
             <Brackets size={18} aria-hidden="true" />
           </div>
-          <div className="relative mx-auto flex h-24 w-24 items-center justify-center rounded-full border border-cyan-200/18 bg-cyan-300/10 text-cyan-100 shadow-[0_0_45px_rgba(34,211,238,0.12)]">
-            <UserRound size={38} strokeWidth={1.5} aria-hidden="true" />
-            <span className="absolute -bottom-2 inline-flex h-9 w-9 items-center justify-center rounded-full border border-cyan-200/20 bg-slate-950 text-cyan-100">
-              <Code2 size={18} aria-hidden="true" />
-            </span>
+          <div className="relative mx-auto flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-cyan-200/18 bg-cyan-300/10 p-1.5 text-cyan-100 shadow-[0_0_45px_rgba(34,211,238,0.12)] sm:h-32 sm:w-32">
+            <img
+              src="/logos/jl-developer-avatar.png"
+              alt="JL developer avatar"
+              title="JL developer avatar"
+              className="h-full w-full object-contain"
+              loading="lazy"
+            />
           </div>
         </div>
 
@@ -68,18 +62,11 @@ export default function DeveloperIdCard({ card }) {
           </p>
         </div>
 
-        <div className="relative mt-4 rounded-lg border border-white/10 bg-slate-950/40 p-3">
+        <div className="relative mt-4 rounded-lg border border-cyan-200/15 bg-cyan-300/10 p-4 shadow-inner shadow-cyan-950/10">
           <p className="font-mono flex items-center justify-center gap-2 text-center text-xs font-medium uppercase text-cyan-100/80">
             <Sparkles size={14} aria-hidden="true" />
             {card.availability}
           </p>
-          <div className="mt-3 flex flex-wrap justify-center gap-1.5">
-            {card.chips.map((chip) => (
-              <span key={chip} className="font-mono rounded-full bg-white/[0.07] px-2.5 py-1 text-[0.68rem] font-medium text-slate-200">
-                {chip}
-              </span>
-            ))}
-          </div>
         </div>
 
         <div className="developer-id-barcode relative mt-4 flex items-end justify-center gap-1" aria-hidden="true">

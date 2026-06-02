@@ -1,12 +1,19 @@
 import { Mail, MessageCircle } from "lucide-react";
-import JLMonogram from "../ui/JLMonogram";
 
 export default function Footer({ footer, onOpenWhatsApp, onOpenEmail }) {
   return (
     <footer className="relative z-10 border-t border-white/10 bg-slate-950/72 backdrop-blur-xl">
       <div className="section-container flex flex-col gap-8 py-10 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-4">
-          <JLMonogram compact />
+        <div className="flex max-w-xl items-center gap-5">
+          <div className="flex h-28 w-28 shrink-0 items-center justify-center overflow-visible drop-shadow-[0_0_28px_rgba(34,211,238,0.16)] sm:h-32 sm:w-32">
+            <img
+              src="/logos/jl-developer-avatar.png"
+              alt="JL developer avatar"
+              title="JL developer avatar"
+              className="h-full w-full object-contain"
+              loading="lazy"
+            />
+          </div>
           <div>
             <p className="font-display text-lg font-semibold text-white">{footer.name}</p>
             <p className="mt-1 text-sm text-slate-300">{footer.subtitle}</p>
